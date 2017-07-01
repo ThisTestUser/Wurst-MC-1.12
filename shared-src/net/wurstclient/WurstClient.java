@@ -1,5 +1,5 @@
 /*
- * Copyright � 2014 - 2017 | Wurst-Imperium | All rights reserved.
+ * Copyright © 2014 - 2017 | Wurst-Imperium | All rights reserved.
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -43,6 +43,7 @@ public enum WurstClient
 	public Updater updater;
 	
 	private boolean enabled = true;
+	private String enableCode = "";
 	
 	public void startClient()
 	{
@@ -89,6 +90,42 @@ public enum WurstClient
 		{
 			mods.panicMod.setEnabled(true);
 			mods.panicMod.onUpdate();
+			if(special.disableSpf.enableMode.getSelected() == 1)
+ 				generateCode();
+ 			else
+ 				WChat.clearMessages();
 		}
 	}
+	
+	private void generateCode()
+ 	{
+ 		SecureRandom random = new SecureRandom();
+		enableCode = "." + new BigInteger(50, random).toString(16);
+		StringSelection selection = new StringSelection(enableCode);
+	    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+	    clipboard.setContents(selection, null);
+	    ChatUtils.message("To enable Wurst again type this code: §l" + enableCode);
+	    ChatUtils.message("It has been copied to your clipboard.");	    
+	    ChatUtils.message("The chat will be automatically cleared after 15 seconds.");
+	    new Thread(() -> {
+	    	try
+			{
+				Thread.sleep(15000);
+			}catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+	    	WChat.clearMessages();
+	    }).start();
+ 	}
+ 	
+ 	public boolean checkCode(String message)
+ 	{
+ 		if(message.equals(enableCode))
+ 		{
+ 			setEnabled(true);
+ 			return true;
+ 		}
+ 		return false;
+ 	}
 }
