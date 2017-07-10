@@ -1,5 +1,5 @@
 /*
- * Copyright © 2014 - 2017 | Wurst-Imperium | All rights reserved.
+ * Copyright Â© 2014 - 2017 | Wurst-Imperium | All rights reserved.
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -31,6 +31,7 @@ public class OptionsManager
 	public int spamDelay = 1000;
 	public int throwAmount = 16;
 	
+	public String fakeHackerVictim = "";
 	public String forceOPList = WurstFolders.MAIN.toString();
 	public String lastLaunchedVersion = "0";
 	
