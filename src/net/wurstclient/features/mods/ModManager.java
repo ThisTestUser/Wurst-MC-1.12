@@ -1,5 +1,5 @@
 /*
- * Copyright © 2014 - 2017 | Wurst-Imperium | All rights reserved.
+ * Copyright Â© 2014 - 2017 | Wurst-Imperium | All rights reserved.
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -95,6 +95,7 @@ public final class ModManager
 	public final DerpMod derpMod = new DerpMod();
 	public final DolphinMod dolphinMod = new DolphinMod();
 	public final ExtraElytraMod extraElytraMod = new ExtraElytraMod();
+	public final FakeHackersMod fakeHackersMod = new FakeHackersMod();
 	public final FancyChatMod fancyChatMod = new FancyChatMod();
 	public final FastBreakMod fastBreakMod = new FastBreakMod();
 	public final FastBowMod fastBowMod = new FastBowMod();
